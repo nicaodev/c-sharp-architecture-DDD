@@ -4,7 +4,6 @@ using Api.Infrastructure.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Api.Infrastructure.Data.Repository
@@ -19,6 +18,7 @@ namespace Api.Infrastructure.Data.Repository
             _context = contextDb;
             _dataset = contextDb.Set<T>();
         }
+
         public async Task<bool> DeleteAsync(Guid id)
         {
             try
