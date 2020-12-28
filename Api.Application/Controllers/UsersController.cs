@@ -28,5 +28,18 @@ namespace Api.Application.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
         }
+
+        [HttpGet("{id}", Name = "GetWithId")]
+        public async Task<ActionResult> Get(Guid id)
+        {
+            try
+            {
+                return Ok(await _service.Get(id));
+            }
+            catch (ArgumentException e)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, e.Message);
+            }
+        }
     }
 }
