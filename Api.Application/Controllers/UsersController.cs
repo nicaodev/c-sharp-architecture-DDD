@@ -10,13 +10,18 @@ namespace Api.Application.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        private readonly IUserService _service;
+        public UsersController(IUserService service)
+        {
+            _service = service;
+        }
         // GET: api/<UsersController>
         [HttpGet]
-        public async Task<ActionResult> GetAll([FromServices] IUserService service)
+        public async Task<ActionResult> GetAll()
         {
             try
             {
-                return Ok(await service.GetAll());
+                return Ok(await _service.GetAll());
             }
             catch (ArgumentException e)
             {
