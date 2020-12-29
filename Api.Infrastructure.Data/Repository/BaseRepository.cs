@@ -49,7 +49,7 @@ namespace Api.Infrastructure.Data.Repository
                 if (item.Id == Guid.Empty)
                     item.Id = Guid.NewGuid();
 
-                item.CreatAt = DateTime.UtcNow;
+                item.CreatAt = DateTime.Now;
                 _dataset.Add(item);
 
                 await _context.SaveChangesAsync();
@@ -94,7 +94,7 @@ namespace Api.Infrastructure.Data.Repository
                 if (result == null)
                     return null;
 
-                item.UpdateAt = DateTime.UtcNow;
+                item.UpdateAt = DateTime.Now;
                 item.CreatAt = result.CreatAt;
 
                 _context.Entry(result).CurrentValues.SetValues(item);

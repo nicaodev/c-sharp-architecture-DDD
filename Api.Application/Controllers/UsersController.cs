@@ -1,4 +1,5 @@
-﻿using Api.Domain.Interfaces.Services.User;
+﻿using Api.Domain.Entities;
+using Api.Domain.Interfaces.Services.User;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -39,6 +40,53 @@ namespace Api.Application.Controllers
             catch (ArgumentException e)
             {
                 return StatusCode(StatusCodes.Status404NotFound, e.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Post([FromBody] UserEntity user)
+        {
+            try
+            {
+                var result = await _service.Post(user);
+                if (result != null)
+                    return Created(new Uri(Url.Link("GetWithId", new { id = result.Id })), result);
+
+                return BadRequest();
+
+            }
+            catch (ArgumentException e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
+        [HttpPut]
+        public async Task<ActionResult> Put([FromBody] UserEntity user)
+        {
+            try
+            {
+                var result = await _service.Put(user);
+                if (!(result == null))
+                    return Ok(result);
+
+                return BadRequest();
+
+            }
+            catch (ArgumentException e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            try
+            {
+                return Ok(await _service.Delete(id));
+            }
+            catch (ArgumentException e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
         }
     }
