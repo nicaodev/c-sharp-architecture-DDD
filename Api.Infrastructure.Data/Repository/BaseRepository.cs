@@ -4,7 +4,6 @@ using Api.Infrastructure.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Api.Infrastructure.Data.Repository
@@ -19,6 +18,7 @@ namespace Api.Infrastructure.Data.Repository
             _context = contextDb;
             _dataset = contextDb.Set<T>();
         }
+
         public async Task<bool> DeleteAsync(Guid id)
         {
             try
@@ -49,7 +49,7 @@ namespace Api.Infrastructure.Data.Repository
                 if (item.Id == Guid.Empty)
                     item.Id = Guid.NewGuid();
 
-                item.CreatAt = DateTime.UtcNow;
+                item.CreatAt = DateTime.Now;
                 _dataset.Add(item);
 
                 await _context.SaveChangesAsync();
@@ -94,7 +94,7 @@ namespace Api.Infrastructure.Data.Repository
                 if (result == null)
                     return null;
 
-                item.UpdateAt = DateTime.UtcNow;
+                item.UpdateAt = DateTime.Now;
                 item.CreatAt = result.CreatAt;
 
                 _context.Entry(result).CurrentValues.SetValues(item);

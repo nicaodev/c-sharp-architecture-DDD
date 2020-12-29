@@ -1,9 +1,6 @@
 ﻿using Api.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Api.Infrastructure.Data.Mapping
 {
@@ -19,10 +16,9 @@ namespace Api.Infrastructure.Data.Mapping
 
             builder.Property(u => u.Name)
                 .IsRequired().HasMaxLength(100);
-            
+
             builder.Property(u => u.Email)
                 .IsRequired().HasMaxLength(100);
-
         }
     }
 }

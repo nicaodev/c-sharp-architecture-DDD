@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Api.Infrastructure.Data.Context
 {
@@ -20,5 +17,4 @@ namespace Api.Infrastructure.Data.Context
             return new ContextDb(optBuilder.Options);
         }
     }
-
 }
