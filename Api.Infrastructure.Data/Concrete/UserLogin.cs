@@ -3,9 +3,6 @@ using Api.Domain.Repository;
 using Api.Infrastructure.Data.Context;
 using Api.Infrastructure.Data.Repository;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Api.Infrastructure.Data.Concrete
@@ -25,4 +22,3 @@ namespace Api.Infrastructure.Data.Concrete
         }
     }
 }
-

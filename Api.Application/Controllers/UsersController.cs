@@ -12,10 +12,12 @@ namespace Api.Application.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserService _service;
+
         public UsersController(IUserService service)
         {
             _service = service;
         }
+
         // GET: api/<UsersController>
         [HttpGet]
         public async Task<ActionResult> GetAll()
@@ -53,13 +55,13 @@ namespace Api.Application.Controllers
                     return Created(new Uri(Url.Link("GetWithId", new { id = result.Id })), result);
 
                 return BadRequest();
-
             }
             catch (ArgumentException e)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
         }
+
         [HttpPut]
         public async Task<ActionResult> Put([FromBody] UserEntity user)
         {
@@ -70,13 +72,13 @@ namespace Api.Application.Controllers
                     return Ok(result);
 
                 return BadRequest();
-
             }
             catch (ArgumentException e)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
         }
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
