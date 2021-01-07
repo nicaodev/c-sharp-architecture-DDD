@@ -1,9 +1,11 @@
+using Api.Domain.Security;
 using Api.Infrastructure.CrossCutting.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 namespace Api.Application
@@ -25,6 +27,17 @@ namespace Api.Application
            );
 
             ConfigureService.ConfigureDependenciesService(services);
+
+            var signingConfigurations = new SigningConfig();
+            services.AddSingleton(signingConfigurations);
+
+            var tokenConfigurations = new TokenConfig();
+            new ConfigureFromConfigurationOptions<TokenConfig>(
+                Configuration.GetSection("TokenConfigurations"))
+                .Configure(tokenConfigurations);
+
+            services.AddSingleton(tokenConfigurations);
+
             services.AddControllers();
         }
 
