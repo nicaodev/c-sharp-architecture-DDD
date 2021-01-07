@@ -3,7 +3,6 @@ using Api.Domain.Interfaces;
 using Api.Domain.Interfaces.Services.User;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Api.Service.Services
@@ -11,6 +10,7 @@ namespace Api.Service.Services
     public class UserService : IUserService
     {
         private readonly IRepository<UserEntity> _repository;
+
         public UserService(IRepository<UserEntity> repository)
         {
             _repository = repository;
