@@ -1,5 +1,6 @@
 ﻿using Api.Domain.DTOs;
 using Api.Domain.Interfaces.Services.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +13,7 @@ namespace Api.Application.Controllers
     public class LoginController : ControllerBase
     {
         // Injeção de depencia direto no metodo.
+        [AllowAnonymous]
         [HttpPost]
         public async Task<object> Login([FromBody] LoginDto loginDto, [FromServices] ILoginService service)
         {
