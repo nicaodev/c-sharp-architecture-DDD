@@ -49,7 +49,7 @@ namespace Api.Application.Controllers
         }
         [Authorize("Bearer")]
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] UserDto user)
+        public async Task<ActionResult> Post([FromBody] UserDtoCreate user)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace Api.Application.Controllers
         }
         [Authorize("Bearer")]
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] UserDto user)
+        public async Task<ActionResult> Put([FromBody] UserDtoUpdate user)
         {
             try
             {

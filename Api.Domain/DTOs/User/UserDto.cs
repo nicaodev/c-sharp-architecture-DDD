@@ -1,13 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
 
 namespace Api.Domain.DTOs.User
 {
     public class UserDto
     {
-        [Required(ErrorMessage = "Nome é obrigatório.")]
+        public Guid Id { get; set; }
         public string Name { get; set; }
-
-        [EmailAddress(ErrorMessage = "E-mail não está válido.")]
         public string Email { get; set; }
+        public DateTime CreateAt { get; set; }
     }
 }
