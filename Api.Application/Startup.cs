@@ -1,5 +1,7 @@
 using Api.Domain.Security;
 using Api.Infrastructure.CrossCutting.DependencyInjection;
+using Api.Infrastructure.CrossCutting.Mappings;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -56,6 +58,17 @@ namespace Api.Application
                 }
             })
             );
+
+            var config = new AutoMapper.MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new DtoToModelProfile());
+                cfg.AddProfile(new EntityToDtoProfile());
+                cfg.AddProfile(new ModelToEntityProfile());
+            });
+
+            IMapper mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
+
 
             ConfigureService.ConfigureDependenciesService(services);
 
