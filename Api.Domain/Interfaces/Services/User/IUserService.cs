@@ -1,5 +1,4 @@
 ﻿using Api.Domain.DTOs.User;
-using Api.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

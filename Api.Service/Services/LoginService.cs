@@ -64,7 +64,6 @@ namespace Api.Service.Services
                     return SucessObject(createDate, expirationDate, token, user);
                 }
             }
-
             else
                 return new
                 {

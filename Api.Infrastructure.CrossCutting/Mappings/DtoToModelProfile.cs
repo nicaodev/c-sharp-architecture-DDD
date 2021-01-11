@@ -6,7 +6,6 @@ namespace Api.Infrastructure.CrossCutting.Mappings
 {
     public class DtoToModelProfile : Profile
     {
-
         public DtoToModelProfile()
         {
             CreateMap<UserModel, UserDto>().ReverseMap();

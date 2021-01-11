@@ -69,7 +69,6 @@ namespace Api.Application
             IMapper mapper = config.CreateMapper();
             services.AddSingleton(mapper);
 
-
             ConfigureService.ConfigureDependenciesService(services);
 
             var signingConfigurations = new SigningConfig();

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Api.Domain.Security
+﻿namespace Api.Domain.Security
 {
     public class TokenConfig
     {
